@@ -1,0 +1,23 @@
+@startuml
+
+class ToDoListWorkshop {
+    +createList(String title);
+}
+
+class ToDoList {
+    -String title;
+    -LinkedList<Task> tasks;
+
+    +addTask(String description);
+    +deleteTask();
+}
+
+class Task {
+    -String description;
+    -Date dueDate;
+    -Date dateCreated;
+    -Date dateCompleted;
+    -boolean isComplete;
+}
+
+@enduml
