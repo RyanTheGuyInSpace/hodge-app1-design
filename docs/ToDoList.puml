@@ -23,6 +23,8 @@ class Task {
     -Date dateCreated;
     -Date dateCompleted;
     -boolean isComplete;
+
+    +delete()
 }
 
 @enduml
