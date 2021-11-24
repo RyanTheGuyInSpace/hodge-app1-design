@@ -1,27 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baseline.MainController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <ListView fx:id="toDoListingBox" layoutY="36.0" onMouseClicked="#loadList" prefHeight="362.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
+                <Button fx:id="newListButton" layoutX="111.0" layoutY="5.0" mnemonicParsing="false" onAction="#createList" text="New List" />
+                <TextField fx:id="newListInputField" layoutX="4.0" layoutY="5.0" prefHeight="26.0" prefWidth="105.0" />
+            </children></AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <ListView fx:id="toDoListItemsBox" accessibleRole="CHECK_BOX" layoutY="36.0" onMouseClicked="#loadTask" prefHeight="462.0" prefWidth="633.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem fx:id="toggleTaskCompleteButton" mnemonicParsing="false" onAction="#toggleTaskComplete" text="Toggle Complete" />
+                                <MenuItem fx:id="editTaskButton" mnemonicParsing="false" onAction="#editTask" text="Edit" />
+                                <MenuItem fx:id="deleteTaskButton" mnemonicParsing="false" onAction="#deleteTask" text="Delete" />
+                                <MenuItem fx:id="setTaskDueDateButton" mnemonicParsing="false" text="Set Due Date" />
+                                <MenuItem fx:id="deleteAllTasksButton" mnemonicParsing="false" onAction="#deleteAllTasks" text="Delete All" />
+                                <MenuItem fx:id="showAllButton" mnemonicParsing="false" onAction="#loadList" text="Show All" />
+                                <MenuItem fx:id="showCompleteButton" mnemonicParsing="false" onAction="#loadComplete" text="Show Complete" />
+                                <MenuItem fx:id="showIncompleteButton" mnemonicParsing="false" onAction="#loadIncomplete" text="Show Incomplete" />
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </ListView>
+                <TextField fx:id="addTaskField" layoutX="7.0" layoutY="4.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="266.0" />
+                <Button fx:id="addTaskButton" layoutX="279.0" layoutY="4.0" mnemonicParsing="false" onAction="#addTask" onMouseClicked="#createList" text="+" />
+                <TextField fx:id="editTaskField" layoutX="320.0" layoutY="4.0" prefHeight="26.0" prefWidth="255.0" />
+                <Button fx:id="editTaskSaveButton" layoutX="585.0" layoutY="4.0" mnemonicParsing="false" onAction="#editTask" text="Save" />
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baseline.ToDoList">
-   <children>
-      <SplitPane prefHeight="400.0" prefWidth="196.0">
-         <items>
-            <ListView prefHeight="200.0" prefWidth="200.0" />
-         </items>
-      </SplitPane>
-      <ScrollPane layoutX="196.0" prefHeight="398.0" prefWidth="401.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="399.0">
-               <children>
-                  <Label layoutX="57.0" layoutY="22.0" prefHeight="27.0" prefWidth="255.0" text="Items" />
-               </children>
-            </AnchorPane>
-        </content>
-      </ScrollPane>
-   </children>
-</AnchorPane>
+            </children>
+        </AnchorPane>
+    </items>
+</SplitPane>
